@@ -21,10 +21,19 @@ def diagnose(string):
    return wordmap
 
 def main(argv=None):
+   """
+   Accepts a purple chat log directory
+   Returns a datastore of form
+   datastore['word']={'count' : #count of this word in document
+                      'after' : map of words and count
+                      'before': map of words and count
+                     } 
+   Before and After maps are in form {'wordname1': count, 'wordname2': count, ...etc}
+   """
    if argv is None:
       argv = sys.argv[1]
    
-   return processFile(argv)
+   return processPurpleDir(argv)
 
 def addWordMaps(datastore, wordmaps):
    for wordmap in wordmaps:
@@ -57,7 +66,7 @@ def updateWordMap(datastore, wordmap):
    else :
       beforemap[beforeword] = 1
 
-def processFile(filedir):
+def processPurpleDir(filedir):
    linelist = scrapePurple.main(filedir)
    datastore = {}
 
