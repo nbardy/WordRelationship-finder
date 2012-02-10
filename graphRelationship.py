@@ -91,14 +91,23 @@ def getTopWordList(datastore, number):
       (word, count) sorted by count descending
    """
 
-   wordCountList = sorted([(value['count'], key) for (key,value) in datastore.items()], reverse=True)
+   wordCountPairList = sorted([(word, wordmap['count']) for (word,wordmap) in datastore.items()],key=operator.itemgetter(1), reverse=True)
 
    if number == None:
       number = len(wordCountList)
 
    return wordCountList[:number]
 
-def getTopRelations(datastore
+def getTopRelations(datastore, word, number):
+   """
+   Accepts a datastore, word, number
+   number of words defaults to all
+   Returns a list of tuples size 2 in the format:
+      (word, count) sorted by count descending
+   """
+   wordCountPairList = sorted([pair for pair in datastore[word]['after'].items()], key=operator.itemgetter(1), reverse=True)
+
+   return 
 
 if __name__ == "__main__":
     sys.exit(main())
