@@ -100,7 +100,7 @@ def getTopWordList(datastore, number=None):
 
    return wordCountPairList[:number]
 
-def getTopRelations(datastore, word, befereorafter, number=None):
+def getTopRelations(datastore, word, beforeorafter, number=None):
    """
    Accepts a datastore, word, 'before' or 'after',number
    number of words defaults to all
