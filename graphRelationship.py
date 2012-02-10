@@ -92,7 +92,13 @@ def getTopWordList(datastore, number):
    """
 
    wordCountList = sorted([(value['count'], key) for (key,value) in datastore.items()], reverse=True)
+
+   if number == None:
+      number = len(wordCountList)
+
    return wordCountList[:number]
+
+def getTopRelations(datastore
 
 if __name__ == "__main__":
     sys.exit(main())
