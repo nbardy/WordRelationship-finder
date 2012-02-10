@@ -1,7 +1,6 @@
 import os
 import re
 import sys
-import string
 
 def main(argv=None):   
    """
@@ -9,19 +8,20 @@ def main(argv=None):
    Returns as a list of lines
    """
    if argv is None:
-      argv = sys.argv
+      argv = sys.argv[1]
+   
+   return scrapeDir(argv)
 
-   directory = sys.argv[1]
+def scrapeDir(directory):
    dirList = os.listdir(directory)
    datalist = []
 
    for filename in dirList:
-         datalist += scrapedata(directory + filename) 
+         datalist += scrapeFile(directory + '/' + filename) 
    
    return datalist
 
-
-def scrapedata(filedir):
+def scrapeFile(filedir):
    """
    Scarpes data from given file
    Returns data as a list of each line
