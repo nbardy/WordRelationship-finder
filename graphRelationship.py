@@ -2,6 +2,8 @@ import sys
 import getopt
 import scrapePurple
 import operator
+#for key in datastore['just']['before']: sum += datastore['just']['before'][key]
+#for later implementation
 
 def diagnose(string):
    """
@@ -53,7 +55,7 @@ def addWordMaps(datastore, wordmaps):
          datastore[word]={'count': 1, 'before':{beforeword: 1}, 'after':{afterword: 1}}
 
 def __updateWordMap(datastore, wordmap):
-   word = wordmap['word'] 
+   word = wordmap['word']
 
    datastore[word]['count'] += 1
 
@@ -83,7 +85,7 @@ def processPurpleDir(filedir):
 
    return datastore
 
-def getTopWordList(datastore, number):
+def getTopWordList(datastore, number=None):
    """
    Accepts a datastore and a number of words to return
    number of words defaults to all
@@ -96,18 +98,18 @@ def getTopWordList(datastore, number):
    if number == None:
       number = len(wordCountList)
 
-   return wordCountList[:number]
+   return wordCountPairList[:number]
 
-def getTopRelations(datastore, word, number):
+def getTopRelations(datastore, word, befereorafter, number=None):
    """
-   Accepts a datastore, word, number
+   Accepts a datastore, word, 'before' or 'after',number
    number of words defaults to all
    Returns a list of tuples size 2 in the format:
       (word, count) sorted by count descending
    """
-   wordCountPairList = sorted([pair for pair in datastore[word]['after'].items()], key=operator.itemgetter(1), reverse=True)
+   wordCountPairList = sorted([pair for pair in datastore[word][beforeorafter].items()], key=operator.itemgetter(1), reverse=True)
 
-   return 
+   return wordCountPairList[:number] 
 
 if __name__ == "__main__":
     sys.exit(main())
