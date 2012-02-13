@@ -78,16 +78,16 @@ def processPurpleDir(filedir):
    Builds a datastore from a purple file directory
    """
    linelist = scrapePurple.scrapeDir(filedir)
-   return makeDataStore(linelist)
+   return makeDatastore(linelist)
 
 def processPurpleFile(fileloc):
    """
    Builds a datastore from a purple file directory
    """
    linelist = scrapePurple.scrapeFile(fileloc)
-   return makeDataStore(linelist)
+   return makeDatastore(linelist)
    
-def makeDataStore(linelist):
+def makeDatastore(linelist):
    """
    Takes a list of words
    Outputs a datastore
@@ -98,13 +98,13 @@ def makeDataStore(linelist):
       wordmaps = diagnose(line.lower())
       addWordMaps(datastore, wordmaps)
 
-   return datastore
+   return datastore 
 
 def wordCount(datastore):
-   sum = 0
+   wsum = 0
    for word in datastore.itervalues():
-      sum += word['count']
-   return sum
+      wsum += word['count']
+   return wsum
 
 def getTopWordList(datastore, number=None):
    """
@@ -114,7 +114,7 @@ def getTopWordList(datastore, number=None):
       (word, count) sorted by count descending
    """
 
-   wordCountList = sorted([(word, wordmap['count']) for (word,wordmap) in datastore.items()],key=operator.itemgetter(1), reverse=True)
+   wordCountList = sorted([word for word in datastore],key=lambda word:datastore[word]['count'], reverse=True)
 
    if number == None:
       number = len(wordCountList)
@@ -128,7 +128,7 @@ def getTopRelations(datastore, word, beforeorafter, number=None):
    Returns a list of tuples size 2 in the format:
       (word, count) sorted by count descending
    """
-   wordCountList = sorted([pair for pair in datastore[word][beforeorafter].items()], key=operator.itemgetter(1), reverse=True)
+   wordCountList = sorted([pair for pair in datastore[word][beforeorafter].iteritems()], key=operator.itemgetter(1), reverse=True)
 
    if number == None:
       number = len(wordCountList)
