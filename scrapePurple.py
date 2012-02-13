@@ -13,6 +13,11 @@ def main(argv=None):
    return scrapeDir(argv)
 
 def scrapeDir(directory):
+   """
+   Scrapes data from all files given directory
+   Returns data as a list of lines
+   """
+
    dirList = os.listdir(directory)
    datalist = []
 
@@ -23,7 +28,7 @@ def scrapeDir(directory):
 
 def scrapeFile(filedir):
    """
-   Scarpes data from given file
+   Scrapes data from given file
    Returns data as a list of each line
    """
    fstring = open(filedir).read()

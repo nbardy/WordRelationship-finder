@@ -2,8 +2,6 @@ import sys
 import getopt
 import scrapePurple
 import operator
-#for key in datastore['just']['before']: sum += datastore['just']['before'][key]
-#code for later implementation
 
 def diagnose(string):
    """
@@ -76,7 +74,24 @@ def __updateWordMap(datastore, wordmap):
       beforemap[beforeword] = 1
 
 def processPurpleDir(filedir):
-   linelist = scrapePurple.main(filedir)
+   """
+   Builds a datastore from a purple file directory
+   """
+   linelist = scrapePurple.scrapeDir(filedir)
+   return makeDataStore(linelist)
+
+def processPurpleFile(fileloc):
+   """
+   Builds a datastore from a purple file directory
+   """
+   linelist = scrapePurple.scrapeFile(fileloc)
+   return makeDataStore(linelist)
+   
+def makeDataStore(linelist):
+   """
+   Takes a list of words
+   Outputs a datastore
+   """
    datastore = {}
 
    for line in linelist:
@@ -84,6 +99,12 @@ def processPurpleDir(filedir):
       addWordMaps(datastore, wordmaps)
 
    return datastore
+
+def wordCount(datastore):
+   sum = 0
+   for word in datastore.itervalues():
+      sum += word['count']
+   return sum
 
 def getTopWordList(datastore, number=None):
    """
@@ -93,12 +114,12 @@ def getTopWordList(datastore, number=None):
       (word, count) sorted by count descending
    """
 
-   wordCountPairList = sorted([(word, wordmap['count']) for (word,wordmap) in datastore.items()],key=operator.itemgetter(1), reverse=True)
+   wordCountList = sorted([(word, wordmap['count']) for (word,wordmap) in datastore.items()],key=operator.itemgetter(1), reverse=True)
 
    if number == None:
       number = len(wordCountList)
 
-   return wordCountPairList[:number]
+   return wordCountList[:number]
 
 def getTopRelations(datastore, word, beforeorafter, number=None):
    """
@@ -107,9 +128,12 @@ def getTopRelations(datastore, word, beforeorafter, number=None):
    Returns a list of tuples size 2 in the format:
       (word, count) sorted by count descending
    """
-   wordCountPairList = sorted([pair for pair in datastore[word][beforeorafter].items()], key=operator.itemgetter(1), reverse=True)
+   wordCountList = sorted([pair for pair in datastore[word][beforeorafter].items()], key=operator.itemgetter(1), reverse=True)
 
-   return wordCountPairList[:number] 
+   if number == None:
+      number = len(wordCountList)
+
+   return wordCountList[:number] 
 
 if __name__ == "__main__":
     sys.exit(main())
