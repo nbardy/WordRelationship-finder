@@ -1,2 +1,17 @@
-No ReadMe yet.
-Sorry Folks.
+Code is sort of a mess right now
+Beautification is coming next
+
+python modules have some help text included other than that
+here is a brief description
+
+You have three modules
+   relationshipFinder
+    -builds a datastore from an array of strings
+   scrapePurple
+    -scrapes a purple chat log into an array of strings
+   graphBuilder
+    -builds a beautiful chart from highcharts data
+
+highcharts.js is the chart making library used to display these graphs
+provided open source and free for a non commericial product
+http://www.highcharts.com
