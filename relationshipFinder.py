@@ -125,15 +125,26 @@ def getTopRelations(datastore, word, beforeorafter, number=None):
    """
    Accepts a datastore, word, 'before' or 'after',number
    number of words defaults to all
-   Returns a list of tuples size 2 in the format:
-      (word, count) sorted by count descending
+
+   Returns a list of Top relations as string sorted high to low
    """
-   wordCountList = sorted([pair for pair in datastore[word][beforeorafter].iteritems()], key=operator.itemgetter(1), reverse=True)
+
+   #Change none to correct string value
+   if beforeorafter=='after':
+      noneReplace = 'End of Sentence'
+   else:
+      noneReplace = 'Start of Sentence'
+
+   #If None is a mapping in before or after map
+   if datastore[word][beforeorafter][None] != None:
+      datastore[word][beforeorafter][noneReplace] = datastore[word][beforeorafter].pop(None)
+
+   wordList = sorted([rword for rword in datastore[word][beforeorafter]], key=lambda rword: datastore[word][beforeorafter][rword], reverse=True)
 
    if number == None:
       number = len(wordCountList)
 
-   return wordCountList[:number] 
+   return wordList[:number] 
 
 if __name__ == "__main__":
     sys.exit(main())
