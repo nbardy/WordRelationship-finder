@@ -113,9 +113,9 @@ def __printHeader(name, datastore, outputfile):
 
 def __printBody(name, outputfile):
    outputfile.write("<body>")
+   outputfile.write('<a href="https://github.com/DivisibleZero/WordRelationship-finder"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:9999" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>')
    outputfile.write("<h1>" + name + "</h1>")
    outputfile.write("<div id=\"wordGraph\"></div>")
-   outputfile.write("<br /><p> Open Source Code hosted at <a href='https://github.com/DivisibleZero/WordRelationship-finder'>GitHub</a>")
    outputfile.write("<br /><p>Graphing library providing by <a href='http://www.highcharts.com'>highcharts</a></p>")
    outputfile.write("</body></html>")
 
@@ -132,23 +132,41 @@ def __outputchartData(datastore, outputfile, size=30):
 
 def __getDataMap(datastore, word, total):
    datamap = {}
-   datamap['y'] = datastore[word]['count']/total
+   datamap['y'] = 100 * datastore[word]['count']/total
    datamap['color'] = "#4572A7"
    datamap['drilldown'] = {}
    subchart =  datamap['drilldown']
 
    subchart['name'] = word
    subchart['categories'] = relationshipFinder.getTopRelations(datastore, word, 'before', 30)
-   subchart['data'] = [datastore[word]['before'][relword]/float(datastore[word]['count']) for relword in subchart['categories']]
+   subchart['data'] = [100*datastore[word]['before'][relword]/float(datastore[word]['count']) for relword in subchart['categories']]
    subchart['color'] = "#4572A7"
 
    return datamap
 
 def chartFromPurpleDir(outputfilename, pdirectory):
-   outputfile = open(outputfilename, "w") 
+   """
+   Outputs a html file for a drilldown bar chart
+
+   Takes a first argument as the name of an output file
+   The second argument is the directory of purple style chat log
+   """
    datastore = relationshipFinder.processPurpleDir(pdirectory)
+   makeChart(outputfilename, datastore)
+
+def makeChart(outputfilename, datastore):
+   """
+   Makes a chart form the arguments
+                                 Output File Name,
+                                 datastore
+   """
+   outputfile = open(outputfilename, "w") 
    __printHeader("Nick's Chat Logs", datastore, outputfile)
    __printBody("Nick's Chat Logs", outputfile)
+
+def chartFromTextFile(outputfilename, txtfile):
+   datastore = relationshipFinder.processTextFile(txtfile)
+   makeChart(outputfilename, datastore)
 
 def main(argv=None):
    if argv==None:

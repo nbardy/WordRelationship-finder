@@ -86,6 +86,18 @@ def processPurpleFile(fileloc):
    """
    linelist = scrapePurple.scrapeFile(fileloc)
    return makeDatastore(linelist)
+
+def processTextFile(fileloc):
+   """
+   Builds a datastore from a plain text file
+   """
+   import nltk.data
+
+   tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+   filedata = open(fileloc).read()
+   linelist = tokenizer.tokenize(filedata)
+   return makeDatastore(linelist)
+
    
 def makeDatastore(linelist):
    """
@@ -135,8 +147,8 @@ def getTopRelations(datastore, word, beforeorafter, number=None):
    else:
       noneReplace = 'Start of Sentence'
 
-   #If None is a mapping in before or after map
-   if datastore[word][beforeorafter][None] != None:
+   #If None is a mapping in before or after map replace with proper identifier 
+   if None in datastore[word][beforeorafter]:
       datastore[word][beforeorafter][noneReplace] = datastore[word][beforeorafter].pop(None)
 
    wordList = sorted([rword for rword in datastore[word][beforeorafter]], key=lambda rword: datastore[word][beforeorafter][rword], reverse=True)
