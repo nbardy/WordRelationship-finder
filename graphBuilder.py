@@ -133,16 +133,20 @@ def __outputchartData(datastore, outputfile, size=30):
 def __getDataMap(datastore, word, total):
    datamap = {}
    datamap['y'] = 100 * datastore[word]['count']/total
+   datamap['y'] = truncate(datamap['y']) 
    datamap['color'] = "#4572A7"
    datamap['drilldown'] = {}
    subchart =  datamap['drilldown']
 
    subchart['name'] = word
    subchart['categories'] = relationshipFinder.getTopRelations(datastore, word, 'before', 30)
-   subchart['data'] = [100*datastore[word]['before'][relword]/float(datastore[word]['count']) for relword in subchart['categories']]
+   subchart['data'] = [truncate(100*datastore[word]['before'][relword]/float(datastore[word]['count'])) for relword in subchart['categories']]
    subchart['color'] = "#4572A7"
 
    return datamap
+
+def truncate(x):
+   return float('%.3f'%(x))
 
 def chartFromPurpleDir(outputfilename, pdirectory):
    """
