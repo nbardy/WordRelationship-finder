@@ -3,6 +3,8 @@ import getopt
 import scrapePurple
 import operator
 
+commonwordfilter = ['the', 'of', 'and', 'a', 'to', 'in', 'is', 'that', 'it', 'was', 'for', 'on', 'are', 'as', 'with','they','or']
+
 def diagnose(string):
    """
    Accepts a string
@@ -118,7 +120,7 @@ def wordCount(datastore):
       wsum += word['count']
    return wsum
 
-def getTopWordList(datastore, number=None):
+def getTopWordList(datastore, number=None, removeCommon=True):
    """
    Accepts a datastore and a number of words to return
    number of words defaults to all
@@ -126,14 +128,17 @@ def getTopWordList(datastore, number=None):
       (word, count) sorted by count descending
    """
 
-   wordCountList = sorted([word for word in datastore],key=lambda word:datastore[word]['count'], reverse=True)
+   topWordList = sorted([word for word in datastore],key=lambda word:datastore[word]['count'], reverse=True)
+
+   if removeCommon:
+      topWordList = filter(lambda word: word not in commonwordfilter, topWordList)
 
    if number == None:
-      number = len(wordCountList)
+      number = len(topWordList)
 
-   return wordCountList[:number]
+   return topWordList[:number]
 
-def getTopRelations(datastore, word, beforeorafter, number=None):
+def getTopRelations(datastore, word, beforeorafter, number=None, removeCommon=True):
    """
    Accepts a datastore, word, 'before' or 'after',number
    number of words defaults to all
@@ -155,6 +160,9 @@ def getTopRelations(datastore, word, beforeorafter, number=None):
 
    if number == None:
       number = len(wordCountList)
+   
+   if removeCommon:
+      wordList = filter(lambda word: word not in commonwordfilter, wordList)
 
    return wordList[:number] 
 

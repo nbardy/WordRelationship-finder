@@ -148,16 +148,6 @@ def __getDataMap(datastore, word, total):
 def truncate(x):
    return float('%.3f'%(x))
 
-def chartFromPurpleDir(outputfilename, pdirectory):
-   """
-   Outputs a html file for a drilldown bar chart
-
-   Takes a first argument as the name of an output file
-   The second argument is the directory of purple style chat log
-   """
-   datastore = relationshipFinder.processPurpleDir(pdirectory)
-   makeChart(outputfilename, datastore)
-
 def makeChart(outputfilename, datastore):
    """
    Makes a chart form the arguments
@@ -168,6 +158,16 @@ def makeChart(outputfilename, datastore):
    __printHeader("Nick's Chat Logs", datastore, outputfile)
    __printBody("Nick's Chat Logs", outputfile)
 
+def chartFromPurpleDir(outputfilename, pdirectory):
+   """
+   Outputs a html file for a drilldown bar chart
+
+   Takes a first argument as the name of an output file
+   The second argument is the directory of purple style chat log
+   """
+   datastore = relationshipFinder.processPurpleDir(pdirectory)
+   makeChart(outputfilename, datastore)
+
 def chartFromTextFile(outputfilename, txtfile):
    datastore = relationshipFinder.processTextFile(txtfile)
    makeChart(outputfilename, datastore)
@@ -175,7 +175,7 @@ def chartFromTextFile(outputfilename, txtfile):
 def main(argv=None):
    if argv==None:
       argv = sys.argv
-   chartFromPurpleDir(argv[1], argv[2])
+   chartFromTextFile(argv[1], argv[2])
 
 if __name__=="__main__":
    sys.exit(main())
