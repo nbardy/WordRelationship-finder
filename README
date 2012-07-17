@@ -1,8 +1,9 @@
-Code is sort of a mess right now
-Beautification is coming next
+This is something I hacked together for a project, so the code is pretty rough shape right now.
+It prints python hashs into giant javascript strings to take advantage of the fact
+that python prints json looking objects.
 
-python modules have some help text included other than that
-here is a brief description
+That said the code still works and produces some pretty neat graphs.
+Feel free to take this and do whatever you would like with it.
 
 You have three modules
    relationshipFinder
