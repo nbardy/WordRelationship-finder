@@ -1,0 +1,96 @@
+
+   <html>
+   <head>
+   <title>Digital Writing Wikispace</title>
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+   <script src="highcharts.js" type="text/javascript"></script>
+   
+   <script>
+   var chart;
+   $(document).ready(function() {
+      
+      var colors = Highcharts.getOptions().colors,
+         name = 'Common Words';
+   var categories = ['this', 'digital', 'we', 'by', 'web', 'be', 'an', 'text', 'not', 'our', 'can', 'more', 'their', 'its', 'writing', 'online', 'from', 'tag', 'when', 'information', 'used', 'how', 'chapter', 'content', 'which', 'way', 'physical', 'but', 'has', 'writers'];var data = [{'y': 0.756, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [28.571, 2.857, 2.857, 2.857, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429, 1.429], 'name': 'this', 'categories': ['Start of Sentence', 'does', 'supports', 'digesting', 'assembling', 'problem;', 'employs', 'prefer', 'achieves', 'evolves,', 'tag,', 'cites', 'around,', 'maybe', 'highlights', 'behind', 'writers,', 'specifically,', 'upon', 'reflect', 'information,', 'least,', 'against', 'represents', 'think', 'mean']}}, {'y': 0.67, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [8.065, 6.452, 4.839, 3.226, 1.613, 1.613, 1.613, 1.613, 1.613, 1.613, 1.613, 1.613], 'name': 'digital', 'categories': ['contemporary', 'Start of Sentence', 'our', 'link', 'all', 'lives,', 'stage,', 'their', 'create', 'evolving', 'by', "today's"]}}, {'y': 0.659, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [6.557, 6.557, 4.918, 4.918, 3.279, 3.279, 3.279, 3.279, 3.279, 3.279, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639, 1.639], 'name': 'we', 'categories': ['Start of Sentence', 'whether', 'how', 'way', 'connections', 'things', 'content', 'body', 'world', 'choices', 'function', 'because', 'people', 'something', 'morning,', 'law,', 'javascript)', 'what', 'psychology', 'space', 'chapter:', 'when', 'truth,', 'ethics,', 'do', 'audience,', 'connection;', 'necessary,', 'truth']}}, {'y': 0.605, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [5.357, 5.357, 3.571, 3.571, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786], 'name': 'by', 'categories': ['Start of Sentence', 'defined', 'pages', 'begins', 'control', 'ignored', 'raised', 'just', 'displayed', 'bound', 'see', 'scanned', 'grasped', 'concludes', '<strong></strong>', 'viewed', 'cured', 'influenced', 'story', 'described', 'thinking', 'restricted', 'only', 'internet', 'structures', 'relationships\xe2\x80\x9d', 'used', 'motivated', 'intended', 'use']}}, {'y': 0.605, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [7.143, 3.571, 3.571, 3.571, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786, 1.786], 'name': 'web', 'categories': ['early', 'environment', 'newer', 'this', 'among', 'Start of Sentence', 'within', 'some', 'take', 'modern', 'varying', 'nonprofessional', 'average', 'differentiates', 'side']}}, {'y': 0.594, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [25.455, 7.273, 5.455, 3.636, 3.636, 3.636, 3.636, 3.636, 1.818, 1.818, 1.818, 1.818, 1.818, 1.818], 'name': 'be', 'categories': ['can', 'must', 'should', 'would', 'may', 'could', 'not', 'might', 'longer', 'wouldn\xe2\x80\x99t', 'site', 'least', 'will', 'otherwise']}}, {'y': 0.443, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [4.878, 4.878, 2.439, 2.439, 2.439, 2.439, 2.439, 2.439, 2.439, 2.439, 2.439, 2.439, 2.439, 2.439, 2.439, 2.439, 2.439, 2.439, 2.439], 'name': 'an', 'categories': ['Start of Sentence', 'over', 'imagetext",', 'when', 'facebook,', 'post,', 'boundary,', 'has', 'authentic\xe2\x80\x9d;', 'summarizes', 'demands', 'how', 'not', 'using', 'vs.', 'institute', 'creates', 'definitely', 'providing']}}, {'y': 0.389, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [8.333, 5.556, 5.556, 5.556, 2.778, 2.778, 2.778, 2.778, 2.778, 2.778, 2.778, 2.778, 2.778, 2.778, 2.778, 2.778, 2.778, 2.778, 2.778], 'name': 'text', 'categories': ['alt', 'alternate', 'digital', 'between', 'marked-up', 'being', 'Start of Sentence', 'static', 'pairing', 'combine', 'which', 'creating', 'perceive', 'moving', 'than', 'tagging', 'crowded', 'enabled', 'animated']}}, {'y': 0.389, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [11.111, 8.333, 5.556, 5.556, 2.778, 2.778, 2.778, 2.778, 2.778, 2.778, 2.778, 2.778], 'name': 'not', 'categories': ['do', 'does', 'should', 'might', 'plagiarize', 'Start of Sentence', 'may', 'interesting', 'writer', 'were', 'is,', 'meaning,']}}, {'y': 0.378, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [5.714, 5.714, 5.714, 2.857, 2.857, 2.857, 2.857, 2.857, 2.857, 2.857], 'name': 'our', 'categories': ['create', 'between', 'constructed', 'permeate', 'superimposing', '\xe2\x80\x9cexcite', 'evolves,', '\xe2\x80\x9cas', 'design', 'which']}}, {'y': 0.367, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [8.824, 8.824, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941], 'name': 'can', 'categories': ['images', 'we', 'people', 'coding', 'one', 'writer', 'sites', 'characteristics,', 'writing', 'writers', 'too', 'which', 'developers', 'but', 'visual', 'effects', 'article', 'chapter', 'physician', 'document', 'contexts', '"metasploits"', 'place', 'representation']}}, {'y': 0.367, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [5.882, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941, 2.941], 'name': 'more', 'categories': ['become', 'Start of Sentence', 'site', 'home', 'perhaps', 'assumed', 'holds', 'cared', 'image', 'be', 'intended', 'far', 'but', 'others', 'quickly,', 'many', 'disabilities', 'communicated', 'think', 'usability']}}, {'y': 0.356, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [9.091, 6.061, 6.061, 6.061, 3.03, 3.03, 3.03, 3.03, 3.03, 3.03, 3.03, 3.03, 3.03], 'name': 'their', 'categories': ['about', 'communicate', 'altering', 'obscures', 'incorporate', 'notes', 'space,', 'begin', 'paper', 'shift', 'telling', 'served', 'illustrate']}}, {'y': 0.335, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [6.452, 6.452, 3.226, 3.226, 3.226, 3.226, 3.226, 3.226, 3.226, 3.226, 3.226, 3.226, 3.226, 3.226, 3.226, 3.226, 3.226, 3.226], 'name': 'its', 'categories': ['disrupts', 'by', 'Start of Sentence', '<b></b>and', 'into', 'within', 'before', 'than', 'transformed', 'out', 'outlines', 'significant', 'uses,', 'about', 'lost', 'gone,', 'across', 'makes']}}, {'y': 0.324, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [13.333, 13.333, 6.667, 6.667, 3.333, 3.333, 3.333, 3.333, 3.333, 3.333, 3.333, 3.333, 3.333, 3.333], 'name': 'writing', 'categories': ['digital', 'electronic', 'Start of Sentence', 'their', 'use', 'web', 'not', 'markup,', 'traditional', 'every', 'elementary', 'our', 'women', 'interactive']}}, {'y': 0.302, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [17.857, 7.143, 3.571, 3.571, 3.571, 3.571, 3.571, 3.571, 3.571, 3.571], 'name': 'online', 'categories': ['our', 'an', 'compare', 'representation', 'this', 'accurate', 'their', 'writing', 'narratives,', 'vast']}}, {'y': 0.302, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [7.143, 7.143, 7.143, 7.143, 7.143, 3.571, 3.571, 3.571, 3.571, 3.571, 3.571, 3.571, 3.571, 3.571, 3.571, 3.571, 3.571, 3.571, 3.571, 3.571], 'name': 'from', 'categories': ['Start of Sentence', 'different', 'drawn', 'free', 'gained', 'spatially', 'analyzing', 'web', 'title', 'media', 'content', 'book', 'interpretation,', 'increased', 'quote', 'uses', 'presented', 'departure', 'experience', 'design']}}, {'y': 0.281, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [19.231, 15.385, 11.538, 11.538, 7.692, 7.692, 3.846, 3.846, 3.846], 'name': 'tag', 'categories': ['<hr>', 'alt', '<body>', '<?php>', '<a>', '<meta>', '<img>', '\xe2\x80\x9chelps', '<style>']}}, {'y': 0.27, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [24.0, 8.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0], 'name': 'when', 'categories': ['Start of Sentence', 'same', 'shown', 'interest', 'cues', '\xe2\x80\x94', 'crucial', 'popularity', 'displayed', 'created', 'potential', 'used', 'thing,', 'arise', 'however,', 'signs\xe2\x80\x94especially', 'help']}}, {'y': 0.27, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [8.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0], 'name': 'information', 'categories': ['submit', 'available', 'all', 'own', 'descriptive', 'move', 'less', 'contains', '\xe2\x80\x9cpresent', 'this', 'relevant', 'immediate', 'background', 'put', 'our', 'your', 'comes', 'presenting']}}, {'y': 0.27, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [20.0, 8.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0], 'name': 'used', 'categories': ['be', 'have', 'term', 'language', 'text', 'egyptians', 'data', 'times', 'tablets', 'non-html', 'were', 'once']}}, {'y': 0.259, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [8.333, 8.333, 8.333, 4.167, 4.167, 4.167, 4.167, 4.167, 4.167, 4.167, 4.167, 4.167, 4.167, 4.167], 'name': 'how', 'categories': ['discuss', 'shape', 'see', 'explaining', 'affects', 'influence', 'upon', 'it\xe2\x80\x99s', 'Start of Sentence', 'html,', 'dictate', 'not', 'theorizes', 'shows']}}, {'y': 0.259, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [54.167, 4.167, 4.167, 4.167, 4.167], 'name': 'chapter', 'categories': ['this', 'devine:', '10\n\n\xe2\x80\x9cthis', 'each', 'review\n\nin']}}, {'y': 0.248, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [8.696, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348], 'name': 'content', 'categories': ['digital', 'both', 'all', 'receive', 'your', 'between', 'where', 'mere']}}, {'y': 0.248, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348], 'name': 'which', 'categories': ['marquee,\xe2\x80\x9d', 'languages', 'code', 'schemata,', 'face,', 'within', 'text,', 'match.com,', 'webpage', 'alternative,', 'through', 'imaging', 'spime,', 'narratives', 'avatars,', 'design,', 'something']}}, {'y': 0.248, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348], 'name': 'way', 'categories': ['"a', 'familiar', 'predominant', 'fast', '\xe2\x80\x98one', 'easy', 'new', 'defining', 'gives']}}, {'y': 0.248, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [17.391, 17.391, 4.348], 'name': 'physical', 'categories': ['their', 'our', 'gender,']}}, {'y': 0.248, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [8.696, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348, 4.348], 'name': 'but', 'categories': ['work,', 'page,', 'implications', 'level,', 'matter,', 'avoided', 'static,', 'negative', 'standard,', 'clips,', 'you', 'obsolescence', 'content,', 'terms', 'benign,', 'discipline,', 'ethics', 'body,', 'many', 'writer,', 'community,', 'online,']}}, {'y': 0.238, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [18.182, 9.091, 9.091, 9.091, 9.091, 4.545, 4.545, 4.545, 4.545, 4.545, 4.545, 4.545, 4.545], 'name': 'has', 'categories': ['tag', 'age', '\xe2\x80\x9cwhat', '\xe2\x80\x9c[history', 'medium', 'chapter', 'elements', 'content)', 'text', 'design', 'anonymity', '2.0', 'mitchell']}}, {'y': 0.227, 'color': '#4572A7', 'drilldown': {'color': '#4572A7', 'data': [42.857, 14.286, 4.762, 4.762, 4.762, 4.762, 4.762, 4.762, 4.762, 4.762], 'name': 'writers', 'categories': ['digital', 'web', 'evolves,', 'choices', 'single', 'taught', 'which', 'meaning,', 'writing,', 'once']}}];
+      function setChart(name, categories, data, color) {
+         chart.xAxis[0].setCategories(categories);
+         chart.series[0].remove();
+         chart.addSeries({
+            name: name,
+            data: data,
+            color: color || 'white'
+         });
+      }
+      
+      chart = new Highcharts.Chart({
+         chart: {
+            renderTo: 'wordGraph', 
+            type: 'column'
+         },
+         title: {
+            text: 'Most Used Words'
+         },
+         subtitle: {
+            text: 'Click the columns to view the words used before and after. Click again to return.'
+         },
+         xAxis: {
+            categories: categories                     
+         },
+         yAxis: {
+            title: {
+               text: 'Total percent usage'
+            }
+         },
+         plotOptions: {
+            column: {
+               cursor: 'pointer',
+               point: {
+                  events: {
+                     click: function() {
+                        var drilldown = this.drilldown;
+                        if (drilldown) { // drill down
+                           setChart(drilldown.name, drilldown.categories, drilldown.data, drilldown.color);
+                        } else { // restore
+                           setChart(name, categories, data);
+                        }
+                     }
+                  }
+               },
+               dataLabels: {
+                  enabled: true,
+                  color: colors[0],
+                  style: {
+                     fontWeight: 'bold'
+                  },
+                  formatter: function() {
+                     return this.y +'%';
+                  }
+               }               
+            }
+         },
+         tooltip: {
+            formatter: function() {
+               var point = this.point,
+                  s = this.x +':<b>'+ this.y +'% usage</b><br/>';
+               if (point.drilldown) {
+                  s += 'Click to view '+ point.category +' versions';
+               } else {
+                  s += 'Click to return to common words';
+               }
+               return s;
+            }
+         },
+         series: [{
+            name: name,
+            data: data,
+            color: 'white'
+         }],
+         exporting: {
+            enabled: false
+         }
+      });
+      
+      
+   });
+   </script>
+   </head><body><a href="https://github.com/DivisibleZero/WordRelationship-finder"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:9999" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a><h1>Digital Writing Wikispace</h1><div id="wordGraph"></div><br /><p>Graphing library providing by <a href='http://www.highcharts.com'>highcharts</a></p></body></html>
